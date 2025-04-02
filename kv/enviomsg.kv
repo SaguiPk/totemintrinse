@@ -1,0 +1,28 @@
+<EnvioMsg>:
+    FloatLayout
+
+        Label:
+            text: " "
+            id: id_msg
+            markup: True
+            font_name: 'Gotham-Rounded-Medium'
+            font_size: '18sp'
+            pos_hint: {"right":0.55, "top": 0.6}
+            size_hint: 0.12, 0.12
+            halign: 'center'
+            valign: 'middle'
+
+        MDIconButton:
+            icon: "home"
+            style: "standard"
+            pos_hint: {"right": 0.1 , "top":0.15}
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            theme_font_size: "Custom"
+            font_size: "40sp"
+            radius: [self.height / 2, ]
+            size_hint: None, None
+            size: "50dp", "50dp"
+            on_release:
+                app.casa()
+                root.manager.transition.direction = "right"

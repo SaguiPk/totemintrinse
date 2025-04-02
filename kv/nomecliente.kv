@@ -1,0 +1,112 @@
+#:import utils kivy.utils
+<NomeCliente>:
+    FloatLayout:
+
+        Label:
+            text: "DIGITE SEU [b]NOME[/b] E [b]HORÁRIO[/b]"
+            pos_hint: {"center_x": .5, "center_y": .9}
+            font_name: 'Gotham-Rounded-Medium'
+            font_size: 20
+            markup: True
+
+        Label:
+            id: msg_erro
+            text: ''
+            font_name: 'Gotham-Rounded-Medium'
+            font_size: 12
+            bold: True
+            color: (1, 0, 0, 1)
+            pos_hint: {"right": 0.6, "top": 0.5}
+            size_hint: 0.2, 0.2
+
+        MDTextField:
+            id: id_input
+            mode: "outlined"
+            size_hint_x: None
+            width: "700dp"
+            pos_hint: {"center_x":.5, "top": 0.8}
+            theme_line_color: "Custom"
+            line_color_normal: "black"
+            line_color_focus: "white"
+
+            MDTextFieldLeadingIcon:
+                icon: "account"
+
+            MDTextFieldHintText:
+                text: "Nome"
+
+            MDTextFieldHelperText:
+                text: "Ex. 'Ana Clara', 'Larissa'"
+                mode: "persistent"
+
+            MDTextFieldMaxLengthText:
+                max_text_length: 20
+
+
+        MDTextField:
+            id: id_input_hora
+            mode: "outlined"
+            size_hint_x: None
+            width: "700dp"
+            pos_hint: {"center_x":.5, "top":.55}
+            theme_line_color: "Custom"
+            line_color_normal: "black"
+            line_color_focus: "white"
+
+            MDTextFieldLeadingIcon:
+                icon: "clock"
+
+            MDTextFieldHintText:
+                text: "Horário"
+
+            MDTextFieldHelperText:
+                text: "Ex. '1400', '0830'"
+                mode: "persistent"
+
+            MDTextFieldMaxLengthText:
+                max_text_length: 4
+
+        MDButton:
+            id: id_enviar
+            style: "elevated"
+            theme_width: "Custom"
+            height: "70dp"
+            size_hint_x: .5
+            radius: [11,]
+            pos_hint: {"center_x": .5, "top": 0.35}
+            on_release:
+                app.verificador(id_input, id_input_hora)
+
+            MDButtonIcon:
+                icon: "send"
+                theme_icon_color: "Custom"
+                icon_color: utils.get_color_from_hex('#8214EB')
+                theme_font_size: "Custom"
+                font_size: "30sp"
+
+            MDButtonText:
+                markup:True
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                theme_font_name: "Custom"
+                font_name: 'Gotham-Rounded-Medium'
+                theme_font_size: "Custom"
+                font_size: 20
+                theme_text_color: "Custom"
+                text_color: utils.get_color_from_hex('#8214EB')
+                text: "Faça Seu Check-in"
+
+
+        MDIconButton:
+            icon: "home"
+            style: "standard"
+            pos_hint: {"right": 0.1 , "top":0.15}
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            theme_font_size: "Custom"
+            font_size: "40sp"
+            radius: [self.height / 2, ]
+            size_hint: None, None
+            size: "50dp", "50dp"
+            on_release:
+                app.casa()
+                root.manager.transition.direction = "right"
