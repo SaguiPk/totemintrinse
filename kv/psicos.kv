@@ -1,0 +1,57 @@
+#:import utils kivy.utils
+<Psicos>:
+
+    FloatLayout:
+        Label:
+            text: "Selecione o [size=35][b]Profissional[/b][/size]"
+            id: id_labpsico
+            font_size: 30
+            font_name: 'Gotham-Rounded-Medium'
+            pos_hint: {"center_x": .5, "center_y": .9}
+            markup: True
+
+        MDIconButton:
+            icon: "home"
+            style: "standard"
+            pos_hint: {"right": 0.1 , "top":0.15}
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            theme_font_size: "Custom"
+            font_size: "40sp"
+            radius: [self.height / 2, ]
+            size_hint: None, None
+            size: "50dp", "50dp"
+            on_release:
+                app.casa()
+                root.manager.transition.direction = "right"
+
+        MDScrollView:
+            do_scroll_x: False
+            pos_hint: {'center_x': .5, 'center_y': .54}
+            size_hint: .8, .6
+            bar_color: (.6,0,.8,.4)
+            bar_inactive_color: (.8,0,.8,.2)
+            bar_width: 4
+
+            MDGridLayout:
+                id: main_scroll
+                cols: 3
+                adaptive_height: True
+                spacing: 10
+                padding: 10
+
+
+        MDFloatLayout:
+            id: id_layout_progresso
+            md_bg_color: (1,1,1,.7)
+            opacity: 0
+
+            MDCircularProgressIndicator:
+                id: id_progresso
+                size_hint: None, None
+                size: "100dp", "100dp"
+                line_width: '4dp'
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                determinate: True
+                color: utils.get_color_from_hex('#8214EB')
+                active: False
